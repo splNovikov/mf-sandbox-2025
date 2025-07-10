@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = {
-    mode: 'development', // or 'production'
+    mode: 'development',
     entry: './src/bootstrap.tsx',
     devtool: 'source-map',
     resolve: {
@@ -29,7 +29,7 @@ module.exports = {
     },
     devServer: {
         static: './dist',
-        port: 3000,
+        port: 3001,
         open: true,
         headers: {
             "Access-Control-Allow-Origin": "*",
@@ -45,10 +45,10 @@ module.exports = {
             template: 'public/index.html',
         }),
         new ModuleFederationPlugin({
-            name: 'channel',
+            name: 'widget',
             filename: 'remoteEntry.js',
-            remotes: {
-                widget: 'widget@http://localhost:3001/remoteEntry.js',
+            exposes: {
+                './Widget': './src/Widget.tsx',
             },
             shared: {
                 react: { singleton: true, requiredVersion: '^19.1.0' },
@@ -56,4 +56,4 @@ module.exports = {
             },
         }),
     ],
-};
+}; 
