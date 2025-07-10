@@ -36,6 +36,25 @@ export async function fetchWidgetsConfig(pageId: string): Promise<PageConfig> {
         }
       ]
     },
+    'future': {
+      pageId: 'future',
+      widgets: [
+        {
+          id: 'future-widget-1',
+          type: 'chart',
+          remote: 'analytics@http://localhost:3002/remoteEntry.js',
+          component: 'ChartWidget',
+          props: { chartType: 'line', data: [1, 2, 3, 4, 5] }
+        },
+        {
+          id: 'future-widget-2',
+          type: 'table',
+          remote: 'data@http://localhost:3003/remoteEntry.js',
+          component: 'DataTable',
+          props: { columns: ['Name', 'Value'], data: [['Item 1', 100], ['Item 2', 200]] }
+        }
+      ]
+    },
     'empty': {
       pageId: 'empty',
       widgets: []

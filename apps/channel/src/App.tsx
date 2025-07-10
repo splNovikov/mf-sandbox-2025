@@ -64,6 +64,20 @@ function App() {
           Analytics
         </button>
         <button 
+          onClick={() => setCurrentPage('future')}
+          style={{ 
+            marginRight: '10px',
+            padding: '8px 16px',
+            backgroundColor: currentPage === 'future' ? '#007bff' : '#6c757d',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          Future
+        </button>
+        <button 
           onClick={() => setCurrentPage('empty')}
           style={{ 
             padding: '8px 16px',

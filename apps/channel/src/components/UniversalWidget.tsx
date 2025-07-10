@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { WidgetConfig } from '../types/widget-config';
-import { loadWidget } from '../services/widget-registry';
+import { loadWidgetDynamically } from '../services/dynamic-widget-loader';
 
 interface UniversalWidgetProps {
   config: WidgetConfig;
@@ -17,11 +17,8 @@ const UniversalWidget: React.FC<UniversalWidgetProps> = ({ config }) => {
         setLoading(true);
         setError(null);
         
-        // Извлекаем имя remote из конфигурации
-        const remoteName = config.remote.split('@')[0];
-        
-        // Загружаем виджет через registry
-        const WidgetComponent = await loadWidget(remoteName, config.component);
+        // Динамически загружаем виджет без hard dependencies
+        const WidgetComponent = await loadWidgetDynamically(config.remote, config.component);
         
         setComponent(() => WidgetComponent);
       } catch (err) {

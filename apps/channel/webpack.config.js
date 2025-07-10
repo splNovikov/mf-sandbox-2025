@@ -47,9 +47,7 @@ module.exports = {
         new ModuleFederationPlugin({
             name: 'channel',
             filename: 'remoteEntry.js',
-            remotes: {
-                widget: 'widget@http://localhost:3001/remoteEntry.js',
-            },
+            // Убираем hard dependency на remotes - они будут загружаться динамически
             shared: {
                 react: { singleton: true, requiredVersion: '^19.1.0' },
                 'react-dom': { singleton: true, requiredVersion: '^19.1.0' },
