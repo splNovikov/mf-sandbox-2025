@@ -7,10 +7,7 @@ function App() {
             <h1>Widget Application</h1>
             <p>This is a widget application that exports a widget component via module federation.</p>
             
-
-
-                <Widget title="Local Widget Demo" />
-
+            <Widget title="Local Widget Demo" />
         </div>
     );
 }
