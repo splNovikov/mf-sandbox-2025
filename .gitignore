@@ -1,0 +1,14 @@
+# Every plugin and inner IDE tool creates its own XML config, so
+# it's easier to ignore whole .idea directory
+.idea
+
+### Node.js custom template
+
+
+### VisualStudioCode template
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace

@@ -1,0 +1,1 @@
+export const getUniqueModuleName = (app: string, moduleName: string) => `${app}__${moduleName}`;

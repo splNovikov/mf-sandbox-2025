@@ -1,0 +1,61 @@
+{
+  "appsRegistry": {
+    "app1": {
+      "bundlePath": "http://localhost:3001",
+      "modules": ["App1Content", "Widget_01", "Widget_02"]
+    },
+    "app2": {
+      "bundlePath": "http://localhost:3002",
+      "modules": ["App2Content", "Widget_03", "Widget_04"]
+    }
+  },
+
+  "layoutTemplateRegistry": {
+    "layout_template_001": {
+      "markup": [
+        {
+          "zones": ["row_1-zone_01"],
+          "settings": {}
+        }, {
+          "zones": ["row_2-zone_01", "row_2-zone_02", "row_2-zone_03"],
+          "settings": {}
+        }
+      ],
+      "settings": {}
+    },
+
+    "layout_template_002": {
+      "markup": [
+        {
+          "zones": ["row_1-zone_01"],
+          "settings": {}
+        }
+      ],
+      "settings": {}
+    }
+  },
+
+  "routeToLayoutBindingRegistry": {
+    "/": {
+      "template": "layout_template_001",
+      "zonesContent": {
+        "row_1-zone_01": [
+          { "app": "app1", "module": "Widget_01", "order": 1},
+          { "app": "app1", "module": "Widget_02", "order": 2}
+        ],
+        "row_2-zone_01": [{ "app": "app2", "module": "Widget_03", "order": 1 }],
+        "row_2-zone_02": [{ "app": "app2", "module": "Widget_04", "order": 1 }],
+        "row_2-zone_03": [{ "app": "app1", "module": "App1Content", "order": 1 }]
+      }
+    },
+
+    "/any-example-page": {
+      "template": "layout_template_002",
+      "zonesContent": {
+        "row_1-zone_01": [
+          { "app": "app2", "module": "App2Content", "order": 1}
+        ]
+      }
+    }
+  }
+}
